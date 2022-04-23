@@ -24,8 +24,9 @@ type BnbModalProps = {
 const bnbModal = ({ show, handleClose }: BnbModalProps) => {
     const [money, setMoney] = useState<any>([])
     const [resultCalc, setResultCalc] = useState<number>()
-    const [inputValue, setInputValue] = useState<string>("");
     const [inpute, setInpute] = useState<string>("");
+    const [inputValue, setInputValue] = useState<string>("");
+    
 
     const fetch = async () =>  {
       const response =  await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
@@ -62,12 +63,16 @@ const bnbModal = ({ show, handleClose }: BnbModalProps) => {
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const bnbData = money?.find((coin:Coin) => coin.symbol === 'bnb')
+       
         const constbnb = bnbData ? (0.021 / bnbData.current_price) : 28;
-        const convert = Number(constbnb.toFixed(3))
         const numberInput = Number(e.target.value)
-        setInputValue(e.target.value)
+        const convert = Number(constbnb.toFixed(3))
         const calcInput = convert * numberInput;
+       
+        setInputValue(e.target.value)
+
         setResultCalc(calcInput)
+        console.log(calcInput)
 }
     const {
         register,
@@ -133,6 +138,7 @@ const bnbModal = ({ show, handleClose }: BnbModalProps) => {
                                     Pay with BNB
                                 </label>
                                 <h1>
+                                
                                 {resultCalc} 
                                
                                 <span style={{fontSize: '20px'}}>

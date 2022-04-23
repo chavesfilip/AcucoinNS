@@ -56,7 +56,7 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
           }
         }
         
-        axios.post('https://qqr.acucoin.ao/api/ada', params, config)
+        axios.post('https://qqr.acucoin.ao/api/trx', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err)) 
         
     }

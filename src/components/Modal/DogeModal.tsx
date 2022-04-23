@@ -54,7 +54,7 @@ const dogeModal = ({ show, handleClose }: DogeModalProps) => {
           }
         }
         
-        axios.post('https://qqr.acucoin.ao/api/ada', params, config)
+        axios.post('https://qqr.acucoin.ao/api/doge', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err)) 
         
     }
