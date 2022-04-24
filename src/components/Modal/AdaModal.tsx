@@ -59,6 +59,8 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
 
 function addApi() {
 
+    const [show, setShow] = useState(true);
+
     const params = new URLSearchParams()
 
     params.append('nome', inpute)    
@@ -104,8 +106,9 @@ function addApi() {
         console.log(data);
     };
     return (
-       
-            <Modal show={show}  onHide={handleClose}>
+            <>
+                
+                <Modal show={show}  onHide={handleClose}>
                 <Modal.Header closeButton>
                     <h5 className="modal-title" id="exampleModalLabel">Buy with ADA</h5>  
                 </Modal.Header>  
@@ -193,6 +196,10 @@ function addApi() {
                     </Modal.Footer>
                 </form>
             </Modal>
+            
+            
+            </>
+            
          
     );
 };
