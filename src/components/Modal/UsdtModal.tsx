@@ -69,7 +69,7 @@ const UsdtModal = ({ show, handleClose }: UsdtModalProps) => {
 
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
-        const usdtData = money?.find((coin:Coin) => coin.symbol === 'trx')
+        const usdtData = money?.find((coin:Coin) => coin.symbol === 'usdt')
         const constusdt = usdtData ? (0.021 / usdtData.current_price) : 28;
         const numberInput = Number(e.target.value)
         const convert = Number(constusdt.toFixed(3))
