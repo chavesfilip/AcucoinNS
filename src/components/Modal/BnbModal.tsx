@@ -70,7 +70,7 @@ const bnbModal = ({ show, handleClose }: BnbModalProps) => {
        
         const constbnb = bnbData ? (0.021 / bnbData.current_price) : 28;
         const numberInput = Number(e.target.value)
-        const convert = Number(constbnb.toFixed(3))
+        const convert = Number(constbnb.toFixed(5))
         const calcInput = convert * numberInput;
        
         setInputValue(e.target.value)
