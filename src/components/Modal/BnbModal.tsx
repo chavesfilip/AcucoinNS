@@ -56,7 +56,7 @@ const bnbModal = ({ show, handleClose }: BnbModalProps) => {
           }
         }
         
-        axios.post('https://dash.acucoin.ao/api/bnbs', params, config)
+        axios.post('https://dash.acucoin.ao/api/bnb', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err)) 
         swal("Thank You!", "You aplication was sucessfully!", "success");
 
