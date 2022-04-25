@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import axios from 'axios'
+import swal from 'sweetalert';
+
 
 
 interface Coin {
@@ -56,8 +58,10 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
           }
         }
         
-        axios.post('https://qqr.acucoin.ao/api/trx', params, config)
-        .then(response=> console.log('deu certo')).catch(err=>console.log(err)) 
+        axios.post('https://dash.acucoin.ao/api/trx', params, config)
+        .then(response=> console.log('deu certo')).catch(err=>console.log(err))
+        swal("Thank You!", "You aplication was sucessfully!", "success");
+ 
         
     }
 
@@ -156,7 +160,8 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
                         type="submit"
                         className="btn btn-primary"
                         id="modal-trx--submit"
-                        onClick={() => addApi()}
+                        onClick={() => { addApi(); handleClose();}}
+
                     >
                         Buy Now
                     </button>

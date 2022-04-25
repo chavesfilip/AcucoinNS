@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import { useState, ChangeEvent } from "react";
+import swal from 'sweetalert';
+import axios from 'axios'
+
 
 interface Inputs {
     paypalToken: string;
@@ -19,11 +22,36 @@ type PaypalModalProps = {
 const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
     const [value, setValue] = useState('')
     const [resultValue, setResultValue] = useState<number>(0)
+    const [inpute, setInpute] = useState<string>("");
+   
+   
+    function addApi() {
+        const params = new URLSearchParams()
+    
+        params.append('nome', inpute)    
+        params.append('valor', value) 
+        params.append('qtd', String(resultValue))
+        
+        const config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
+        
+        axios.post('https://dash.acucoin.ao/api/ada', params, config)
+        .then(response=> console.log('deu certo')).catch(err=>console.log(err))
+        
+        swal("Thank You!", "You aplication was sucessfully!", "success");
+ 
+        
+    }
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         setValue(e.target.value);
         const numberInput = Number(e.target.value)
         const calcInput = numberInput * 0.21;
+        
         setResultValue(calcInput)
+
 
         
     }
@@ -61,6 +89,8 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
                                 defaultValue="validation"   
                                 {...register("paypalToken", 
                                 { required: true })} 
+                                onChange={(e) => setInpute(e.target.value)}
+
                                                                     
                         />
                         <p className="text-danger">
@@ -73,7 +103,8 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
                                     <label className="col-form-label">Pay with PAYPAL:</label>
                                     <input type="number" className="form-control" id="value_coin"   onChange={ (e) => handleChange(e)} />
                             </div>
-                                <label  
+                            <div className="col-sm-5">
+                                 <label  
                                     className="col-form-label">
                                         You will get Paypal
                                 </label>
@@ -84,6 +115,7 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
                                 </span>
                                 </h1>
                             
+                            </div>
                             <code className="highlighter-rouge 4b-2">
                                 (TO AVOID LOSS PLEASE  TRANSFER  THE EXACT AMOUNT OF ADA)
                             </code>
@@ -102,6 +134,8 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
                              type="submit"
                              className="btn btn-primary"
                              id="meuBotao"
+                             onClick={() => { addApi(); handleClose();}}
+
                              >
                             Buy Now
                         </button>

@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { Modal } from "react-bootstrap";
+import swal from 'sweetalert';
+
 
 interface Inputs {
     bnbToken: string;
@@ -54,8 +56,10 @@ const bnbModal = ({ show, handleClose }: BnbModalProps) => {
           }
         }
         
-        axios.post('https://qqr.acucoin.ao/api/bnb', params, config)
+        axios.post('https://dash.acucoin.ao/api/bnbs', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err)) 
+        swal("Thank You!", "You aplication was sucessfully!", "success");
+
         
     }
 
@@ -72,6 +76,7 @@ const bnbModal = ({ show, handleClose }: BnbModalProps) => {
         setInputValue(e.target.value)
 
         setResultCalc(calcInput)
+        
         console.log(calcInput)
 }
     const {
@@ -165,7 +170,8 @@ const bnbModal = ({ show, handleClose }: BnbModalProps) => {
                              type="submit"
                              className="btn btn-primary"
                              id="meuBotao"
-                             onClick={() => addApi()}
+                             onClick={() => { addApi(); handleClose();}}
+
                              >
                             Buy Now
                         </button>

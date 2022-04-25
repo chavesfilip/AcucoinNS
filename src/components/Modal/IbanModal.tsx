@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import { ChangeEventHandler, useState, ChangeEvent } from "react";
+import swal from 'sweetalert';
+
 
 interface Inputs {
     ibanToken: string;
@@ -73,7 +75,9 @@ const paypalModal = ({ show, handleClose }: IbanModalProps) => {
 
                      <div className="form-group">
                         <label  className="col-form-label">Deposit Slip</label>
-                        <input type="file" className="form-control"  accept="image/* application/pdf"/>
+                        <code className="highlighter-rouge 4b-2">
+                                (send vai e-mail: acu.editora@gmail.com or whatssapp: +244 935396811)
+                        </code>
                     </div>
 
                     <div className="form-group row">

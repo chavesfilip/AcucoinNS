@@ -22,7 +22,7 @@ export default function Article(){
                 </div>
                 <div className="col-sm-8" style={{textAlign: 'left'}}>
                     Acucoin is an utility token that comes a gift in the ACU Comics books. The amount of Acucoin required to buy a comic book decreases for each print run, increasing the value of Acucoin. Readers use Acucoin to buy more comics or pay for products  and services at Acucoin Alliance Members.
-                    1 ACU will be backed by the comic book and will have the same value of the comic book, starting from 3.5 usd 
+                    1 ACU will be backed by the comic book and will have the same value of the comic book, starting from 3 usd 
 
                 </div>
                 <div className="col-sm-2 ml-auto">

@@ -4,6 +4,8 @@ import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import React, {useState, useEffect, ChangeEvent } from 'react'
 import axios from 'axios'
+import swal from 'sweetalert';
+
 
 
 interface Inputs {
@@ -54,8 +56,10 @@ const dogeModal = ({ show, handleClose }: DogeModalProps) => {
           }
         }
         
-        axios.post('https://qqr.acucoin.ao/api/doge', params, config)
+        axios.post('https://dash.acucoin.ao/api/doge', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err)) 
+        swal("Thank You!", "You aplication was sucessfully!", "success");
+
         
     }
 
@@ -159,7 +163,8 @@ const dogeModal = ({ show, handleClose }: DogeModalProps) => {
                         type="submit"
                         className="btn btn-primary"
                         id="meuBotao"
-                        onClick={() => addApi()}
+                        onClick={() => { addApi(); handleClose();}}
+
                         >
                        Buy Now
                    </button>

@@ -5,6 +5,8 @@ import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import axios from 'axios'
 import api from '../../service';
+import swal from 'sweetalert';
+
 
 
 
@@ -36,12 +38,11 @@ type AdaModalProps = {
 const adaModal = ({ show, handleClose }: AdaModalProps) => {
     const [money, setMoney] = useState<any>([])
     const [resultCalc, setResultCalc] = useState<number>()
-    const [inpute, setInpute] = useState<string>("");
     const [inputValue, setInputValue] = useState<string>("");
+    const [inpute, setInpute] = useState<string>("");
     
 
 
-    console.log(inpute)
 
     const fetch = async () =>  {
       const response =  await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
@@ -57,27 +58,26 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
       fetch()}, []
     )
 
-function addApi() {
-
-    const [show, setShow] = useState(true);
-
-    const params = new URLSearchParams()
-
-    params.append('nome', inpute)    
-    params.append('valor', inputValue) 
-    params.append('qtd', String(resultCalc))
+    function addApi() {
+        const params = new URLSearchParams()
     
-    const config = {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
+        params.append('nome', inpute)    
+        params.append('valor', inputValue) 
+        params.append('qtd', String(resultCalc))
+        
+        const config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
+        
+        axios.post('https://dash.acucoin.ao/api/ada', params, config)
+        .then(response=> console.log('deu certo')).catch(err=>console.log(err))
+        
+        swal("Thank You!", "You aplication was sucessfully!", "success");
+ 
+        
     }
-    
-    axios.post('https://qqr.acucoin.ao/api/ada', params, config)
-    .then(response=> console.log('deu certo')).catch(err=>console.log(err)) 
-    
-    
-}
 
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -86,10 +86,10 @@ function addApi() {
         const constAda = adaData ? (0.021 / adaData.current_price) : 28;
         const numberInput = Number(e.target.value)
         const convert = Number(constAda.toFixed(3))
+        
         const calcInput = convert * numberInput;
         
         setInputValue(e.target.value) 
-
         setResultCalc(calcInput)
 }
 
@@ -188,7 +188,7 @@ function addApi() {
                                 type="submit"
                                 className="btn btn-primary"
                                 id="meuBotao"
-                                onClick={() => addApi()}
+                                onClick={() => { addApi(); handleClose();}}
                                 
                                 >
                                 Buy Now

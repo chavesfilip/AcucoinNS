@@ -32,11 +32,11 @@ export default function Footer(){
                         <div className="footer_inner">
                             <h5>COMMUNITY</h5>
                             <ul>
-                                <li><a href="https://discord.gg/225NxyUg" target="_BLANK">Discord</a></li>
                                 <li><a href="https://t.me/+cLCzNoYxTFlkODZk" target="_BLANK">Telegram English</a></li>
                                 <li><a href="https://t.me/+OzE9MATskmdmNjFk" target="_BLANK">Telegram Spanish</a></li>
                                 <li><a href="https://t.me/+UGqEfdBSh7NiYzk8" target="_BLANK">Telegram Portuguese</a></li>
                                 <li><a href="https://t.me/+_zYTcNw5I4k3MjA8" target="_BLANK">Telegram French</a></li>
+                                <li><a href="https://discord.gg/225NxyUg" target="_BLANK">Discord</a></li>
                             </ul>
                         </div>
                     </div>
