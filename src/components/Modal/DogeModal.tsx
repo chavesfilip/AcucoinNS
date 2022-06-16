@@ -1,8 +1,6 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { Modal } from "react-bootstrap";
-import React, {useState, useEffect, ChangeEvent } from 'react'
+import {useState, useEffect, ChangeEvent } from 'react'
 import axios from 'axios'
 import swal from 'sweetalert';
 
@@ -16,9 +14,7 @@ interface Coin {
     current_price: number;
 }
 
-const validationPost = yup.object({
-    dogeToken: yup.string().required("please all fields"),
-}) .required();
+
 
 type DogeModalProps = {
     show: boolean;
@@ -43,7 +39,8 @@ const dogeModal = ({ show, handleClose }: DogeModalProps) => {
     useEffect(() => {
       fetch()}, []
     )
-    function addApi() {
+    function addApi(e:any) {
+        e.preventDefault();
         const params = new URLSearchParams()
     
         params.append('nome', inpute)    
@@ -67,53 +64,59 @@ const dogeModal = ({ show, handleClose }: DogeModalProps) => {
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const dogeData = money?.find((coin:Coin) => coin.symbol === 'doge')
-        const constdoge = dogeData ? (0.021 / dogeData.current_price) : 28;
-        const convert = Number(constdoge.toFixed(3))
+        const constdoge = dogeData ? (0.21 / dogeData.current_price) : 28;
+        const convert = Number(constdoge)
         const numberInput = Number(e.target.value)
-        const calcInput = convert * numberInput;
+        const calcInput = Number((convert * numberInput).toFixed(3))
+
         setInputValue(e.target.value)
         setResultCalc(calcInput)
 }
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Inputs>({
-        resolver: yupResolver(validationPost),
-    });
+function inputValidated(e: any){
+    e.preventDefault();
+    if(inpute === "" || inputValue === ""){
+        swal ( "Oops" ,  "please fill in all fields!!" ,  "error" )
+    }else{
+        if (inputValue <= "250") {
+            swal ( "Oops" ,  "The amount must be greater than 250 or less than 20000!" ,  "error" ) 
+        }else{
+            addApi(e);
+            setInputValue("")
+            setInpute("")
+        }
 
-    const onSubmit = (data: Inputs) => {
-        console.log(data);
-    };
+
+    }
+  }
+    
     return(
         <Modal show={show}  onHide={handleClose}>
         <Modal.Header closeButton>
            <h5 className="modal-title" id="exampleModalLabel">Buy with DOGE</h5>  
         </Modal.Header>  
-       <form onSubmit={handleSubmit(onSubmit)}>
+       <form>
             <Modal.Body>
                <div className="form-group">
                     <label  
                        className="col-form-label">
                        Enter your Acucoin receive address
-                   </label>
+                   </label> <br/>
                    <code className="highlighter-rouge 4b-1">
                             (Make Sure It is a TRON /TRC10 ADDRESS)
                     </code>
                    <input type="text" 
                            className="form-control"
                            id="trx-token"
-                           placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9" 
-                           defaultValue="validation"   
-                           {...register("dogeToken", 
-                           { required: true })} 
+                           placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9"  
                            onChange={(e) => setInpute(e.target.value)}
 
                                                                
                    />
-                   <p className="text-danger">
-                       {errors.dogeToken?.message}
-                   </p>
+                   <div className="form-group mt-3">
+                            <label  className="col-form-label">Email:</label>
+                            <input type="Email" className="form-control"  placeholder="bob@gmail.com" />
+                    </div>
+                  
                </div>
 
                <div className="form-group row">
@@ -126,6 +129,7 @@ const dogeModal = ({ show, handleClose }: DogeModalProps) => {
                                className="form-control" 
                                id="value_coin" 
                                onChange={(e) => handleChange(e)}
+                               placeholder="25"
 
                                                                   
                             />
@@ -144,7 +148,7 @@ const dogeModal = ({ show, handleClose }: DogeModalProps) => {
                            </h1>
                        </div>
                        <code className="highlighter-rouge 4b-2">
-                                (TO AVOID LOSS PLEASE  TRANSFER  THE EXACT AMOUNT OF doge)
+                                (TO AVOID LOSS PLEASE  TRANSFER  THE EXACT AMOUNT OF DOGE)
                         </code>
 
                </div>
@@ -163,7 +167,8 @@ const dogeModal = ({ show, handleClose }: DogeModalProps) => {
                         type="submit"
                         className="btn btn-primary"
                         id="meuBotao"
-                        onClick={() => { addApi(); handleClose();}}
+                        onClick={inputValidated}
+
 
                         >
                        Buy Now

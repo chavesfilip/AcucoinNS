@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, ChangeEvent } from 'react'
 import Home from './pages/home'
 import Banner  from './pages/banner'
 import Article from './pages/article'
@@ -11,9 +11,23 @@ import Info2 from './pages/info2'
 
 
 
+
+import { i18n } from './components/translete/i18n'
+
+const i18n_STORAGE_KEY = 'i18nextLng';
+
+
+
+
+
+
 function App() {
+
+    
+
   return (
       <div>
+            
             <Home />
             <Banner />
             <Article />
@@ -23,6 +37,10 @@ function App() {
             <Full />
             <Footer />
             <Footer1 />
+           
+            
+           
+
       </div>
   )
 }

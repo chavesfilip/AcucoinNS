@@ -5,6 +5,7 @@ import '../../assets/css/style.css'
 import imgservice from '../../assets/images/icon1.png'
 import imgservice2 from '../../assets/images/icon2.png'
 import imgservice3 from '../../assets/images/icon3.png'
+import i18n from "../../lang";
 
 
 
@@ -19,19 +20,19 @@ export default function Info1(){
                     <div className="col-sm-4">
                         <div className="services_icon_inner text-center">
                             <img src={imgservice} alt="icon" />
-                            <p>Demand for Trade</p>
+                            <p>{i18n.t('messages.p2')}</p>
                         </div>
                     </div>
                     <div className="col-sm-4">
                         <div className="services_icon_inner text-center">
                             <img src={imgservice2} alt="icon" />
-                            <p> Growing Value</p>
+                            <p>{i18n.t('messages.p3')}</p>
                         </div>
                     </div>
                     <div className="col-sm-4">
                         <div className="services_icon_inner text-center">
                             <img src={imgservice3} alt="icon" />
-                            <p>Backed by a Product</p>
+                            <p>{i18n.t('messages.p4')}</p>
                         </div>
                     </div>
                 </div>

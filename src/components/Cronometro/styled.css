@@ -1,0 +1,18 @@
+.main-section{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    font-weight: bold;
+
+}
+.number{
+    background-color: #3F65AC;
+    color: white;
+    padding: 0.60rem 2rem;
+    border-radius: 0.30rem;
+}
+
+h1{
+    text-align: center;
+}

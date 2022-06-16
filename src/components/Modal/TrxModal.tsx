@@ -1,6 +1,4 @@
 import React, {useState, useEffect, ChangeEvent } from 'react'
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import axios from 'axios'
@@ -17,9 +15,6 @@ interface Inputs {
     trxToken: string;
 }
 
-const validationPost = yup.object({
-    trxToken: yup.string().required("por favor preencha todos os campos"),
-}) .required();
 
 type TrxModalProps = {
     show: boolean;
@@ -45,7 +40,8 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
     useEffect(() => {
       fetch()}, []
     )
-    function addApi() {
+    function addApi(e: any) {
+        e.preventDefault();
         const params = new URLSearchParams()
     
         params.append('nome', inpute)    
@@ -60,6 +56,7 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
         
         axios.post('https://dash.acucoin.ao/api/trx', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err))
+       
         swal("Thank You!", "You aplication was sucessfully!", "success");
  
         
@@ -71,24 +68,34 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const trxData = money?.find((coin:Coin) => coin.symbol === 'trx')
 
-        const consttrx = trxData ? (0.021 / trxData.current_price) : 28;
-        const convert = Number(consttrx.toFixed(3))
+        const consttrx = trxData ? (0.21 / trxData.current_price) : 28;
+        const convert = Number(consttrx)
         const numberInput = Number(e.target.value)
-        const calcInput = convert * numberInput;
+        const calcInput = Number((convert * numberInput).toFixed(3))
+
+
         setInputValue(e.target.value) 
         setResultCalc(calcInput)
 }
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Inputs>({
-        resolver: yupResolver(validationPost),
-    });
+  function inputValidated(e: any){
+    e.preventDefault();
+    if(inpute === "" || inputValue === ""){
+        swal ( "Oops" ,  "Please fill in all fields!" ,  "error" )
+    }else{
+        if (inputValue <= "25") {
+            swal ( "Oops" ,  "The amount must be greater than 250! or less than!" ,  "error" ) 
+        }else{
+            addApi(e);
+            setInputValue("")
+            setInpute("")
+        }
 
-    const onSubmit = (data: Inputs) => {
-        console.log(data);
-    };
+
+    }
+  }
+
+  
+   
 
     return (
         <Modal show={show} onHide={handleClose}>
@@ -97,7 +104,7 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
                     Buy with TRX
                 </h5>
             </Modal.Header>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form>
                 <Modal.Body>
                     <div className="form-group">
                         <label className="col-form-label">
@@ -106,18 +113,21 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
                         <code className="highlighter-rouge 4b-1">
                             (Make Sure It is a TRON /TRC10 ADDRESS)
                         </code>
-                        <input
-                            id="trx-token"
-                            type="text"
-                            className="form-control"
-                            placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9"
-                            defaultValue="validation"
-                            {...register("trxToken", { required: true })}
-                            onChange={(e) => setInpute(e.target.value)}
-                        />
-                        <p className="text-danger">
-                            {errors.trxToken?.message}
-                        </p>
+                        <div className='form-group mt-3'>
+                            <input
+                                id="trx-token"
+                                type="text"
+                                className="form-control"
+                                placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9"
+                                onChange={(e) => setInpute(e.target.value)}
+                            />
+                         </div>
+                        <div className="form-group mt-3">
+                            <label  className="col-form-label">Email:</label>
+                            <input type="Email" className="form-control"  placeholder="bob@gmail.com" />
+                         </div>
+
+                     
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-4">
@@ -129,6 +139,8 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
                                 className="form-control"
                                 id="value_coin"
                                 onChange={(e) => handleChange(e)}
+                                placeholder="25"
+                                
 
                             />
                         </div>
@@ -160,7 +172,7 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
                         type="submit"
                         className="btn btn-primary"
                         id="modal-trx--submit"
-                        onClick={() => { addApi(); handleClose();}}
+                        onClick={inputValidated}
 
                     >
                         Buy Now

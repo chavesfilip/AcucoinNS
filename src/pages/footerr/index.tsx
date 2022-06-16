@@ -2,6 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/css/slick.css'
 import '../../assets/css/style.css'
+import i18n from "../../lang";
 
 export default function Footer1(){
 
@@ -10,7 +11,7 @@ export default function Footer1(){
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <p>© 2022 A.C.U - African Comics Universe. All rights reserved</p>
+                        <p>© {i18n.t('messages.p19')}</p>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import '../../assets/css/slick.css'
 import '../../assets/css/style.css'
 import '../../assets/css/font-awesome.min.css'
 import imglogo from '../../assets/images/dropcoin.png'
+import i18n from "../../lang";
 
 
 export default function Footer(){
@@ -30,7 +31,7 @@ export default function Footer(){
                     </div>
                     <div className="col-md-3">
                         <div className="footer_inner">
-                            <h5>COMMUNITY</h5>
+                            <h5>{i18n.t('titles.h14')}</h5>
                             <ul>
                                 <li><a href="https://t.me/+cLCzNoYxTFlkODZk" target="_BLANK">Telegram English</a></li>
                                 <li><a href="https://t.me/+OzE9MATskmdmNjFk" target="_BLANK">Telegram Spanish</a></li>
@@ -42,7 +43,7 @@ export default function Footer(){
                     </div>
                     <div className="col-md-2">
                         <div className="footer_inner">
-                            <h5>whitepaper</h5>
+                            <h5>{i18n.t('titles.H16')}</h5>
                             <ul>
                                 <li><a href="#"></a></li>
                                 <li><a href="https://bit.ly/366eYjO" target="_BLANK">English</a></li>
@@ -53,7 +54,7 @@ export default function Footer(){
                     </div>
                     <div className="col-md-2">
                         <div className="footer_inner">
-                            <h5>COMPANY</h5>
+                            <h5>{i18n.t('titles.H15')}</h5>
                             <ul>
                                 <li><a href="https://acu-editora.ao/" target="_BLANK">A.C.U</a></li>
                                 <li><a href="acu.editora@gmail.com" target="_BLANK" style={{textTransform: 'lowercase'}}>acu.editora@gmail.com</a></li>

@@ -1,10 +1,8 @@
 
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import { ChangeEventHandler, useState, ChangeEvent } from "react";
 import swal from 'sweetalert';
+import axios from 'axios'
 
 
 interface Inputs {
@@ -13,11 +11,6 @@ interface Inputs {
     ibanNumber: number;
 }
 
-const validationPost = yup.object().shape({
-    ibanToken: yup.string().required("please all fields").max(50, "please only 50 characters allowed"),
-    ibanUserFullName: yup.string().required("please all fields").max(50, "please only 50 characters allowed"),
-    ibanNumber: yup.number().required('please only 50 characters allowed').positive("o campo deve ser positivo").integer("o campo deve ser inteiro")
-}) .required();
 
 type IbanModalProps = {
     show: boolean;
@@ -25,53 +18,87 @@ type IbanModalProps = {
 };
 const paypalModal = ({ show, handleClose }: IbanModalProps) => {
     const [value, setValue] = useState('')
+    const [input, setInpute] = useState('')
+    const [email, setEmail] = useState('')
+
     const [resultValue, setResultValue] = useState<number>(0)
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         setValue(e.target.value);
+
         const numberInput = Number(e.target.value)
-        const calcInput = numberInput / 10;
+        const calcInput = numberInput / 100;
         setResultValue(calcInput)
 
         
     }
+    function addApi(e:any) {
+        e.preventDefault();
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Inputs>({
-        resolver: yupResolver(validationPost),
-    });
+        const params = new URLSearchParams()
+    
+      //  params.append('endress', inpute)    
+       // params.append('valor', inputValue) 
+       // params.append('qtd', String(resultCalc))
+        
+        const config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
+        
+        axios.post('https://dash.acucoin.ao/api/iban', params, config)
+        .then(response=> console.log('deu certo')).catch(err=>console.log(err))
+        
+        swal("Thank You!", "You aplication was sucessfully!", "success");
+        
+        
+    }
+    function inputValidated(e: any){
+        e.preventDefault();
+        if(value === "" || input === "" || email === ""){
+            swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
+        }else{
+            if (value <= "25") {
+                swal ( "Oops" ,  "The amount must be greater than 250 or less than 20000!!" ,  "error" ) 
+            }else{
+                addApi(e);
+                setValue("")
+                setInpute("")
+            }
+    
+    
+        }
+      }
 
-    const onSubmit = (data: Inputs) => {
-        console.log(data);
-    };
+   
     
     return(
         <Modal show={show}  onHide={handleClose}>
              <Modal.Header closeButton>
                 <h5 className="modal-title" id="exampleModalLabel">Buy with IBAN</h5>  
              </Modal.Header>  
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form>
                  <Modal.Body>
                     <div className="form-group">
-                        <label  className="col-form-label">Enter your Acucoin receive address <code className="highlighter-rouge 4b-2">(TRON / TRC10 TOKEN)</code></label>
-                        <input type="text" className="form-control" placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9" defaultValue="validation"  {...register("ibanToken", 
-                                { required: true })}  />
-                        <p className="text-danger">{errors.ibanToken?.message}</p>
+                        <label  className="col-form-label">Enter your Acucoin receive address </label> <br />
+                        <code className="highlighter-rouge 4b-1">
+                                (Make Sure It is a TRON /TRC10 ADDRESS)
+                        </code>
+                        <input type="text" className="form-control" placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9"
+                         onChange={(e) => setInpute(e.target.value)}
+
+                        />
                     </div>
 
                      <div className="form-group">
-                        <label  className="col-form-label">Full Name</label>
-                        <input type="text" className="form-control"  placeholder="Ex: Satoshi Nakamoto" defaultValue="validation"   {...register("ibanUserFullName",  { required: true })} />
-                        <span className="text-danger">{errors.ibanUserFullName?.message}</span>
+                        <label  className="col-form-label">Email</label>
+                        <input type="email" className="form-control"  placeholder="bob@gmail.com" 
+                                onChange={(e) => setEmail(e.target.value)}
+
+                        />
                     </div>
 
-                    <div className="form-group">
-                        <label  className="col-form-label">Phone Number</label>
-                        <input type="text" className="form-control"  placeholder="930 000 000" defaultValue="validation"  {...register("ibanNumber", { required: true })} />
-                        <span className="text-danger">{errors.ibanNumber?.message}</span>
-                    </div>
+
 
                      <div className="form-group">
                         <label  className="col-form-label">Deposit Slip</label>
@@ -83,7 +110,7 @@ const paypalModal = ({ show, handleClose }: IbanModalProps) => {
                     <div className="form-group row">
                         <div className="col-sm-5">
                             <label  className="col-form-label"> Pay with kwanza</label>
-                             <input type="number" className="form-control" id="value_coin"  min="1000"  onChange={ (e) => handleChange(e) } />
+                             <input type="number" className="form-control" id="value_coin"  placeholder="1000"  onChange={ (e) => handleChange(e) } />
                          </div>
 
                          <div className="col-sm-6">
@@ -104,7 +131,7 @@ const paypalModal = ({ show, handleClose }: IbanModalProps) => {
                  </Modal.Body>
                 <Modal.Footer>
                         <button
-                             type="submit"
+                             onClick={inputValidated}
                              className="btn btn-primary"
                              id="meuBotao"
                              >

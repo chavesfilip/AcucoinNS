@@ -1,5 +1,4 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+
 import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import { useState, ChangeEvent } from "react";
@@ -11,9 +10,7 @@ interface Inputs {
     paypalToken: string;
 }
 
-const validationPost = yup.object({
-    paypalToken: yup.string().required("por favor preencha todos os campos"),
-}) .required();
+
 
 type PaypalModalProps = {
     show: boolean;
@@ -25,7 +22,8 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
     const [inpute, setInpute] = useState<string>("");
    
    
-    function addApi() {
+    function addApi(e:any) {
+        e.preventDefault();
         const params = new URLSearchParams()
     
         params.append('nome', inpute)    
@@ -55,69 +53,71 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
 
         
     }
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Inputs>({
-        resolver: yupResolver(validationPost),
-    });
+    function inputValidated(e: any){
+        e.preventDefault();
+        if(inpute === "" || value === ""){
+            swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
+        }else{
+            if (value <= "25") {
+                swal ( "Oops" ,  "The amount must be greater than 250 or less than 20000!!!" ,  "error" ) 
+            }else{
+                addApi(e);
+                setValue("")
+                setInpute("")
+            }
+    
+    
+        }
+      }
+    
 
-    const onSubmit = (data: Inputs) => {
-        console.log(data);
-    };
+    
     return(
         <Modal show={show}  onHide={handleClose}>
              <Modal.Header closeButton>
                 <h5 className="modal-title" id="exampleModalLabel">Buy with PAYPAL</h5>  
              </Modal.Header>  
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form >
                  <Modal.Body>
                     <div className="form-group">
                          <label  
                             className="col-form-label">
                             Enter your Acucoin receive address
                         </label>
-                         <code 
-                            className="highlighter-rouge 4b-2">
-                            (TRON / TRC10 TOKEN)
-                        </code>
+                        <br/>
+                        <code className="highlighter-rouge 4b-1">
+                                (Make Sure It is a TRON /TRC10 ADDRESS)
+                            </code>
                         <input type="text" 
                                 className="form-control"
                                 id="trx-token"
-                                placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9" 
-                                defaultValue="validation"   
-                                {...register("paypalToken", 
-                                { required: true })} 
+                                placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9"  
                                 onChange={(e) => setInpute(e.target.value)}
 
                                                                     
                         />
-                        <p className="text-danger">
-                            {errors.paypalToken?.message}
-                        </p>
                     </div>
 
                     <div className="form-group row">
                             <div className="col-sm-5">
-                                    <label className="col-form-label">Pay with PAYPAL:</label>
-                                    <input type="number" className="form-control" id="value_coin"   onChange={ (e) => handleChange(e)} />
+                                    <label className="col-form-label">You will get ACU:</label>
+                                    <input type="number" className="form-control" id="value_coin" placeholder="25"   onChange={ (e) => handleChange(e)} />
                             </div>
                             <div className="col-sm-5">
                                  <label  
                                     className="col-form-label">
-                                        You will get Paypal
+                                        Pay with Dollar
                                 </label>
                                 <h1>
                                 {resultValue} 
                                 <span style={{fontSize: '20px'}}>
-                                    ADA
+                                    USD
                                 </span>
                                 </h1>
                             
                             </div>
                             <code className="highlighter-rouge 4b-2">
-                                (TO AVOID LOSS PLEASE  TRANSFER  THE EXACT AMOUNT OF ADA)
+                                (TO AVOID LOSS PLEASE  TRANSFER  THE EXACT AMOUNT OF DOLLAR)
                             </code>
                             
 
@@ -134,7 +134,7 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
                              type="submit"
                              className="btn btn-primary"
                              id="meuBotao"
-                             onClick={() => { addApi(); handleClose();}}
+                             onClick={inputValidated}
 
                              >
                             Buy Now

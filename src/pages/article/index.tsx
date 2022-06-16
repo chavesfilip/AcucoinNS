@@ -5,6 +5,8 @@ import '../../assets/css/style.css'
 import '../../assets/css/font-awesome.min.css'
 import img10 from '../../assets/images/dropcoin.png'
 import img11 from '../../assets/images/map.png'
+import i18n from "../../lang";
+import Cronometro from "../../components/Cronometro";
 
 
 
@@ -21,13 +23,13 @@ export default function Article(){
                     </div>
                 </div>
                 <div className="col-sm-8" style={{textAlign: 'left'}}>
-                    Acucoin is an utility token that comes a gift in the ACU Comics books. The amount of Acucoin required to buy a comic book decreases for each print run, increasing the value of Acucoin. Readers use Acucoin to buy more comics or pay for products  and services at Acucoin Alliance Members.
-                    1 ACU will be backed by the comic book and will have the same value of the comic book, starting from 3 usd 
+                   <p> {i18n.t('messages.p1')} </p>
 
                 </div>
                 <div className="col-sm-2 ml-auto">
                     <img src={img11} style={{width: '260px' }} />
                 </div>
+                <Cronometro />
             </div>
         </div>
     </div> 

@@ -2,6 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/css/slick.css'
 import '../../assets/css/style.css'
+import i18n from "../../lang";
 
 export default function Info2(){
     return(
@@ -18,12 +19,12 @@ export default function Info2(){
                                 </div>
                                 <div className="col-sm-9">
                                     <div className="btc_ser_txt">
-                                        <h4>TOKENOMICS</h4>
-                                        <p>5.225.000 ACU - Comic Book Gift</p>
-                                        <p>2.200.000 ACU - Token Reserve & LP</p>
-                                        <p>1.000.000 ACU - Shareholders</p>
-                                        <p>1.000.000 ACU - ICO</p>
-                                        <p>575.000 ACU - Partners, Team & Marketing </p>
+                                        <h4>{i18n.t('messages.h4')}</h4>
+                                        <p>5.225.000 ACU - {i18n.t('messages.p5')} </p>
+                                        <p>2.200.000 ACU - {i18n.t('messages.p6')}</p>
+                                        <p>1.000.000 ACU - {i18n.t('messages.p7')}</p>
+                                        <p>1.000.000 ACU - {i18n.t('messages.p8')}</p>
+                                        <p>575.000 ACU - {i18n.t('messages.p9')}  </p>
                                     </div>
                                 </div>
                             </div>

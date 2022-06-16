@@ -1,7 +1,4 @@
 import React, {useState, useEffect, ChangeEvent } from 'react'
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import axios from 'axios'
 import api from '../../service';
@@ -14,21 +11,9 @@ interface Coin {
     symbol: string;
     current_price: number;
 }
-interface Inputs {
-    adaToken: string;
-}
-interface backAda{
-    nome: string;
-    valor: number;
-    qtd: number;
-    
 
 
-}
 
-const validationPost = yup.object({
-    adaToken: yup.string().required("please all fields"),
-}) .required();
 
 type AdaModalProps = {
     show: boolean;
@@ -58,7 +43,9 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
       fetch()}, []
     )
 
-    function addApi() {
+    function addApi(e:any) {
+        e.preventDefault();
+
         const params = new URLSearchParams()
     
         params.append('nome', inpute)    
@@ -75,7 +62,6 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
         .then(response=> console.log('deu certo')).catch(err=>console.log(err))
         
         swal("Thank You!", "You aplication was sucessfully!", "success");
- 
         
     }
 
@@ -83,28 +69,35 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const adaData = money?.find((coin:Coin) => coin.symbol === 'ada')
 
-        const constAda = adaData ? (0.021 / adaData.current_price) : 28;
+        const constAda = adaData ? (0.21 / adaData.current_price) : 28;
         const numberInput = Number(e.target.value)
-        const convert = Number(constAda.toFixed(3))
-        
-        const calcInput = convert * numberInput;
+        const convert = Number(constAda)
+       
+        const calcInput = Number((convert * numberInput).toFixed(3))
         
         setInputValue(e.target.value) 
         setResultCalc(calcInput)
 }
+function inputValidated(e: any){
+    e.preventDefault();
+    if(inpute === "" || inputValue === ""){
+        swal ( "Oops" ,  "please fill in all fields!" ,  "error" )
+    }else{
+        if (inputValue <= "25" || inputValue <= "20000") {
+            swal ( "Oops" ,  "The amount must be greater than 250 or less than 20000!" ,  "error" ) 
+        }else{
+            addApi(e);
+            setInputValue("")
+            setInpute("")
+        }
 
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Inputs>({
-        resolver: yupResolver(validationPost),
-    });
+    }
+  }
 
-    const onSubmit = (data: Inputs) => {
-        console.log(data);
-    };
+
+  
+    
     return (
             <>
                 
@@ -112,7 +105,7 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
                 <Modal.Header closeButton>
                     <h5 className="modal-title" id="exampleModalLabel">Buy with ADA</h5>  
                 </Modal.Header>  
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form >
                     <Modal.Body>
                         <div className="form-group">
                             <label  
@@ -122,24 +115,22 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
                             <code className="highlighter-rouge 4b-1">
                                 (Make Sure It is a TRON /TRC10 ADDRESS)
                             </code>
-                            <code className="highlighter-rouge 4b-1">
-                                (Make Sure It is a TRON /TRC10 ADDRESS)
-                            </code>
                             <input type="text" 
                                     className="form-control"
                                     id="trx-token"
                                     placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9" 
-                                    defaultValue="validation"   
-                                    {...register("adaToken", 
-                                    { required: true })} 
+                                  
+                                    
                                     onChange={(e) => setInpute(e.target.value)}
 
 
                                                                         
                             />
-                            <p className="text-danger">
-                                {errors.adaToken?.message}
-                            </p>
+                            <div className="form-group mt-3">
+                                <label  className="col-form-label">Email:</label>
+                                <input type="Email" className="form-control"  placeholder="bob@gmail.com" />
+                         </div>
+                         
                         </div>
 
                         <div className="form-group row">
@@ -152,6 +143,8 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
                                         className="form-control" 
                                         id="value_coin" 
                                         onChange={(e) => handleChange(e)}
+                                        min="250" required
+                                        placeholder='25'
                                     />
                                 </div>
 
@@ -188,7 +181,7 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
                                 type="submit"
                                 className="btn btn-primary"
                                 id="meuBotao"
-                                onClick={() => { addApi(); handleClose();}}
+                                onClick={inputValidated}
                                 
                                 >
                                 Buy Now

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, ChangeEvent} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/css/slick.css'
 import '../../assets/css/style.css'
@@ -21,6 +21,9 @@ import AdaModal from "../../components/Modal/AdaModal";
 import DogeModal from "../../components/Modal/DogeModal";
 import PaypalModal from "../../components/Modal/PaypalModal";
 import IbanModal from "../../components/Modal/IbanModal";
+
+
+import { i18n } from '../../components/translete/i18n'
 
 
 
@@ -47,13 +50,15 @@ export default function Banner(){
      const handleClose = () => setActiveModal(null);
      const handleShow = (id: number) => {
         setActiveModal(id)
-        console.log('manuel')
         
      }
      const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({
         resolver: yupResolver(validationPost)
       });
      const onSubmit = (data: Inputs) => console.log(data);
+
+    
+    
     
      return(
         <section className="full_banner">
@@ -68,8 +73,8 @@ export default function Banner(){
                                     <div className="banner_txt_img">
                                     </div>
                                     <div className="banner_txt_h">
-                                        <h1>participate in acucoin pre-sale</h1>
-                                        <h2>1 acu = 0.02 USD</h2>
+                                        <h1>{i18n.t('titles.h1')}</h1>
+                                        <h2>1 acu = 0.2 USD</h2>
                                     </div>
                                 </div>
                             </div>
@@ -77,10 +82,11 @@ export default function Banner(){
                         <div className="row">
                             <div className="col-sm-10 m-auto">
                                 <div className="banner_form text-center">
-                                    <span className="text-white">After you make the payment, we take less than 72 hours to deposite Acucoins to your wallet</span> <br />
-                                    <span className="text-white">We accept: TRX, USDT, BNB, ADA, DOGE, PayPal and IBAN </span>
+                                    <span className="text-white">{i18n.t('messages.span')}</span> <br />
+                                    <span className="text-white">{i18n.t('messages.span1')}</span>
+                                   
 
-                                    <p className="text-center text-white mt-2"  style={{ position: 'relative', bottom: '-20px', fontWeight: 'bold',}}> Choose a payment method!</p>
+                                    <p className="text-center text-white mt-2"  style={{ position: 'relative', bottom: '-20px', fontWeight: 'bold',}}>{(i18n.t('messages.p'))}</p>
 
                                     <div className=" col-md-8  pt-4 container1">
                                         <div className="fx">

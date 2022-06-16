@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, ChangeEvent } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/css/slick.css'
 import '../../assets/css/style.css'
@@ -9,6 +9,14 @@ interface Coin{
     symbol: string;
     current_price: number;
 }
+
+
+
+const i18n_STORAGE_KEY = 'i18nextLng';
+
+
+
+
 export default function Home(){
     const [money, setMoney] = useState<Coin[]>()
     const Postmoney = async () => {
@@ -24,7 +32,7 @@ export default function Home(){
       const pricedCoins = filtercoins.map((item: Coin) => {
         return {
             ...item,
-            current_price: Number((0.021 / item.current_price).toFixed(5))
+            current_price: Number((0.21 / item.current_price).toFixed(5))
         };
      })
      setMoney(pricedCoins)
@@ -37,6 +45,7 @@ export default function Home(){
 useEffect(() => {
     Postmoney()
 }, [])
+
     return(
         <header id="full_header">
         <div className="container">
@@ -55,6 +64,8 @@ useEffect(() => {
                 </div>
             </div
 >        </div>
+
     </header>
+    
     )
 }
