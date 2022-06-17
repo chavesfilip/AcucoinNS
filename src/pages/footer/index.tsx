@@ -47,7 +47,6 @@ export default function Footer(){
                             <ul>
                                 <li><a href="#"></a></li>
                                 <li><a href="https://drive.google.com/file/d/14lKlAWbdqXtVfOXVVUoR4Pe3B7piUKIL/view" target="_BLANK">English</a></li>
-                                <li><a href="https://bit.ly/3oDOBrG" target="_BLANK">Spanish</a></li>
                                 <li><a href="https://drive.google.com/file/d/1ORduN3cq4Tt43Olb0-UVww4sYzV4p5_Q/view" target="_BLANK">Português</a></li>
                             </ul>
                         </div>
