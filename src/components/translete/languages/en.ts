@@ -27,7 +27,7 @@ const messages= {
                 span:'After you make the payment, we take less than 24 hours to deposit Acucoins to your wallet',
                 span1:'We accept: TRX, USDT, BNB, ADA, DOGE, PayPal and IBAN',
                 p:'Choose a payment method',
-                p1:'Acucoin is an utility token that comes a gift in ACU Comics books. Readers use Acucoin to buy more comics or pay for products and services at Acucoin Alliance Members. The amount of Acucoin required to buy a comic book decreases for each print run, till 1 Acucoin is used to buy 1 comic book equitant to 5 usd ',
+                p1:'Acucoin is an utility token that comes a gift in ACU Comics books. Readers use Acucoin to buy more comics or pay for products and services at Acucoin Alliance Members. The amount of Acucoin required to buy a comic book decreases for each print run, till 1 Acucoin is used to buy 1 comic book equivalent to 5 usd ',
                 
                 th1:'Maximum Supply',
                 th2:'Circulating Supply',

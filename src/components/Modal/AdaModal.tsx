@@ -11,10 +11,7 @@ interface Coin {
     symbol: string;
     current_price: number;
 }
-
-
-
-
+ 
 type AdaModalProps = {
     show: boolean;
     handleClose: () => void;
