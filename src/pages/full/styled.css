@@ -1,7 +1,23 @@
-select{
-    padding: 0.35rem 1rem;
+
+ .ul{
     border-radius: 5%;
     position: fixed;
     top: 150px;
-    right: 30px;
+    right: 50px;
+    background-color: black;
+    color: white;
+    height: 5rem;
+    text-align: center;
+
+ }
+ .l1 {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+
+ }
+ ul li{
+    list-style: none;
  }

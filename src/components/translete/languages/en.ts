@@ -1,5 +1,5 @@
 const messages= {
-    en:{
+    pt:{
         translations:{
             titles: {
                 h1:'participate in acucoin ICO!',

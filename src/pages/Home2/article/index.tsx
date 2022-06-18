@@ -1,12 +1,13 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../assets/css/slick.css'
-import '../../assets/css/style.css'
-import '../../assets/css/font-awesome.min.css'
-import img10 from '../../assets/images/dropcoin.png'
-import img11 from '../../assets/images/map.png'
-import i18n from "../../lang"
-import Cronometro from "../../components/Cronometro"
+import '../../../assets/css/slick.css'
+import '../../../assets/css/style.css'
+import '../../../assets/css/font-awesome.min.css'
+import img10 from '../../../assets/images/dropcoin.png'
+import img11 from '../../../assets/images/map.png'
+
+import Cronometro2 from "../../../components/Cronometro2"
+
 
 
 
@@ -23,13 +24,13 @@ export default function Article(){
                     </div>
                 </div>
                 <div className="col-sm-8" style={{textAlign: 'left'}}>
-                   <p> {i18n.t('messages.p1')} </p>
+                   <p>Acucoin é um token de utilidade que vem como brinde nas revistas ACU. Os leitores usam Acucoin para adquirir mais revistas ou pagar por bens e serviços nos Membros da Aliança Acucoin.  A quantidade de Acucoin necessária para comprar uma revista diminui a cada tiragem até atinjir o lastro. Momento em que 1 Acucoin será usado para comprar uma revista ACU equivalente a 5 dollars. </p>
 
                 </div>
                 <div className="col-sm-2 ml-auto">
                     <img src={img11} style={{width: '260px' }} />
                 </div>
-                <Cronometro />
+                <Cronometro2 />
             </div>
         </div>
     </div> 
