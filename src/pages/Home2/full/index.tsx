@@ -41,7 +41,7 @@ export default function Full(){
                 <div className="col-sm-4">
                     <div className="serives_inner">
                         <h5><i className="fa fa-btc" aria-hidden="true"></i> ESCASSO </h5>
-                        <p>Mais raro que o bitcoin devido à sua oferta máxima mais baixa..</p>
+                        <p>Mais raro que o bitcoin devido à sua oferta máxima  mais baixa..</p>
                     </div>
                 </div>
                 <div className="col-sm-4">
