@@ -93,13 +93,6 @@ export default function Full(){
                 
             </div>
         </div>
-        <div className=''>
-            <select className='select' id='mather' onChange={handleSelectChange}>
-                        <option value="pt-BR">EN</option>
-                        <option value="en-US">PT</option>
-            </select>
-        </div>
-        
         </section>
     )
 }
