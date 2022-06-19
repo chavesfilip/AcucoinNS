@@ -41,7 +41,7 @@ export default function Cronometro2(){
 
     return (
         <>
-             <h1>ICO COMEÇA EM:</h1>
+             <h1>ICO TERMINARÁ EM:</h1>
              <div className="main-section">
             <div className="number">
                 <span className="one">D</span> <br />

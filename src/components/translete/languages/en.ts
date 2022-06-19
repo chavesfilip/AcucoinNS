@@ -20,7 +20,7 @@ const messages= {
                 H15: 'COMPANY',
                 H16: 'WHITEPAPER',
 
-                h19: 'ICO STARTS IN'
+                h19: 'ICO END IN'
 
             },
             messages:{
@@ -58,7 +58,7 @@ const messages= {
 
 
                 //FOOTER
-                p19:'Copyright 2022 - All Rights Reserved LAVERAGE LDA'
+                p19:'Copyright 2022  LAVERAGE LDA - All Rights Reserved'
 
                 
 

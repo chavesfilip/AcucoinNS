@@ -25,7 +25,7 @@ export default function Footer(){
                             <ul>
                                 <li><a href="https://twitter.com/ACUCOIN1?t=zQAiLg" target="_BLANK">Twitter</a></li>
                                 <li><a href="https://www.facebook.com/RevistaACU" target="_BLANK">Facebook</a></li>
-                                <li><a href="#" target="_BLANK">Instaram</a></li>
+                                <li><a href="#" target="_BLANK">Instagram</a></li>
                             </ul>
                         </div>
                     </div>
@@ -33,10 +33,9 @@ export default function Footer(){
                         <div className="footer_inner">
                             <h5>COMUNIDADE</h5>
                             <ul>
-                                <li><a href="https://t.me/+cLCzNoYxTFlkODZk" target="_BLANK">Telegram English</a></li>
-                                <li><a href="https://t.me/+OzE9MATskmdmNjFk" target="_BLANK">Telegram Spanish</a></li>
-                                <li><a href="https://t.me/+UGqEfdBSh7NiYzk8" target="_BLANK">Telegram Portuguese</a></li>
-                                <li><a href="https://t.me/+_zYTcNw5I4k3MjA8" target="_BLANK">Telegram French</a></li>
+                                <li><a href="https://t.me/+cLCzNoYxTFlkODZk" target="_BLANK">Telegram Inglês</a></li>
+                                <li><a href="https://t.me/+OzE9MATskmdmNjFk" target="_BLANK">Telegram Espanhol</a></li>
+                                <li><a href="https://t.me/+UGqEfdBSh7NiYzk8" target="_BLANK">Telegram Portugues</a></li>
                                 <li><a href="https://discord.gg/225NxyUg" target="_BLANK">Discord</a></li>
                             </ul>
                         </div>
@@ -46,7 +45,7 @@ export default function Footer(){
                             <h5>WHITEPAPER</h5>
                             <ul>
                                 <li><a href="#"></a></li>
-                                <li><a href="https://drive.google.com/file/d/14lKlAWbdqXtVfOXVVUoR4Pe3B7piUKIL/view" target="_BLANK">English</a></li>
+                                <li><a href="https://drive.google.com/file/d/14lKlAWbdqXtVfOXVVUoR4Pe3B7piUKIL/view" target="_BLANK">Inglês</a></li>
                                 <li><a href="https://drive.google.com/file/d/1ORduN3cq4Tt43Olb0-UVww4sYzV4p5_Q/view" target="_BLANK">Português</a></li>
                             </ul>
 

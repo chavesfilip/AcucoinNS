@@ -67,7 +67,7 @@ export default function Banner(){
                                     <div className="banner_txt_img">
                                     </div>
                                     <div className="banner_txt_h">
-                                        <h1>PARTICIPE DO ICO DA ACUCOIN!</h1>
+                                        <h1>PARTICIPE DO ICO DA ACUCOIN</h1>
                                         <h2>1 acu = 0.2 USD</h2>
                                     </div>
                                 </div>

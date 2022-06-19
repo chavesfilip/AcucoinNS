@@ -33,7 +33,7 @@ export default function Info2(){
                         <div className="btc_ser_inner"  style={{borderRadius: '10px'}}>
                             <div id="particles-new2js" className="btc_ser_partical"></div>
                                     <div className="btc_ser_txt">
-                                        <h4>Fases do ICO´S</h4>
+                                        <h4>Fases do ICO</h4>
                                         <p>1º-ICO : 200.000 ACU - 1 ACU - 0.2 USD</p>
                                         <p>1º ICO : 200.000 ACU - 1 ACU - 0.3 USD</p>
                                         <p>2º ICO : 200.000 ACU - 1 ACU - 0.5 USD</p>

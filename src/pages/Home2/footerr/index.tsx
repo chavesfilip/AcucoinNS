@@ -10,7 +10,7 @@ export default function Footer1(){
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <p>Copyrigth 2022 - Todos os direitos reservado LARAVAGE LDA </p>
+                        <p>Copyrigth 2022 - Todos os direitos reservado a  LAVERAGE LDA </p>
                     </div>
                 </div>
             </div>

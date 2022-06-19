@@ -25,7 +25,7 @@ export default function Info1(){
                     <div className="col-sm-4">
                         <div className="services_icon_inner text-center">
                             <img src={imgservice2} alt="icon" />
-                            <p>Valorização Crescente</p>
+                            <p>Crescente Valorização</p>
                         </div>
                     </div>
                     <div className="col-sm-4">
