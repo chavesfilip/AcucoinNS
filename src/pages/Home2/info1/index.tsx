@@ -19,19 +19,19 @@ export default function Info1(){
                     <div className="col-sm-4">
                         <div className="services_icon_inner text-center">
                             <img src={imgservice} alt="icon" />
-                            <p>Demanda por Comércio</p>
+                            <p>Demanda por Troca</p>
                         </div>
                     </div>
                     <div className="col-sm-4">
                         <div className="services_icon_inner text-center">
                             <img src={imgservice2} alt="icon" />
-                            <p>Valor Crescente</p>
+                            <p>Valorização Crescente</p>
                         </div>
                     </div>
                     <div className="col-sm-4">
                         <div className="services_icon_inner text-center">
                             <img src={imgservice3} alt="icon" />
-                            <p>Apoiado por um produto</p>
+                            <p>Lastreado em um produto</p>
                         </div>
                     </div>
                 </div>

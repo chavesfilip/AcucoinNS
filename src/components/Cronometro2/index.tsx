@@ -14,7 +14,7 @@ export default function Cronometro2(){
     let interval:any  = useRef();
 
     const startTime = () => {
-        const countdownDate = new Date('june 20 2022, 00:00:00:00').getTime();
+        const countdownDate = new Date('july 5 2022, 00:00:00:00').getTime();
 
         interval = setInterval(() => {
             const  now = new Date().getTime();
@@ -41,7 +41,7 @@ export default function Cronometro2(){
 
     return (
         <>
-             <h1>ICO COMEÇA EM</h1>
+             <h1>ICO COMEÇA EM:</h1>
              <div className="main-section">
             <div className="number">
                 <span className="one">D</span> <br />

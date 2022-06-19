@@ -18,12 +18,12 @@ export default function Info2(){
                                 </div>
                                 <div className="col-sm-9">
                                     <div className="btc_ser_txt">
-                                        <h4>TOQUENOMIA</h4>
-                                        <p>5.225.000 ACU - gift </p>
-                                        <p>2.200.000 ACU - Token  reserva & LP</p>
-                                        <p>1.000.000 ACU - Acionistas e equipe</p>
+                                        <h4>Distribuição</h4>
+                                        <p>5.225.000 ACU - Brinde </p>
+                                        <p>2.200.000 ACU - Reserva & LP</p>
+                                        <p>1.000.000 ACU - Acionistas e Team</p>
                                         <p>1.000.000 ACU - ICO</p>
-                                        <p>575.000 ACU- parceiros e marketing </p>
+                                        <p>575.000 ACU- Parceiros e Marketing </p>
                                     </div>
                                 </div>
                             </div>
@@ -33,12 +33,12 @@ export default function Info2(){
                         <div className="btc_ser_inner"  style={{borderRadius: '10px'}}>
                             <div id="particles-new2js" className="btc_ser_partical"></div>
                                     <div className="btc_ser_txt">
-                                        <h4>ICO´s</h4>
-                                        <p>Pre-ICO : 200.000 ACU - 1 ACU - 0.02 USD</p>
-                                        <p>1st ICO : 200.000 ACU - 1 ACU - 0.3 USD</p>
-                                        <p>2nd ICO : 200.000 ACU - 1 ACU - 0.5 USD</p>
-                                        <p>3rd ICO : 200.000 ACU - 1 ACU - 0.7 USD</p>
-                                        <p>4th ICO : 200.000 ACU - 1 ACU - 0.9 USD</p>
+                                        <h4>Fases do ICO´S</h4>
+                                        <p>1º-ICO : 200.000 ACU - 1 ACU - 0.2 USD</p>
+                                        <p>1º ICO : 200.000 ACU - 1 ACU - 0.3 USD</p>
+                                        <p>2º ICO : 200.000 ACU - 1 ACU - 0.5 USD</p>
+                                        <p>3º ICO : 200.000 ACU - 1 ACU - 0.7 USD</p>
+                                        <p>4º ICO : 200.000 ACU - 1 ACU - 0.9 USD</p>
                                     </div>
                             </div>
                         </div>

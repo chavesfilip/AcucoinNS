@@ -15,7 +15,7 @@ export default function Ifo(){
                             <tr>
                                 <th>FORNECIMENTO MÁXIMO</th>
                                 <th>FORNECIMENTO CIRCULANTE</th>
-                                <th>TITULARES</th>
+                                <th>PROPRIETÁRIOS</th>
                                 <th>TRANSFERÊNCIAS</th>
                             </tr>
                             <tr>

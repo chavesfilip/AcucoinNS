@@ -76,7 +76,7 @@ export default function Banner(){
                         <div className="row">
                             <div className="col-sm-10 m-auto">
                                 <div className="banner_form text-center">
-                                    <span className="text-white">depois de recebermos o pagamento, levaremos cerca de 24 horas para depositar os Acucoins em sua carteira</span> <br />
+                                    <span className="text-white">Depois de recebermos o pagamento, levaremos cerca de 24 horas para depositar os Acucoins em sua carteira.</span> <br />
                                     <span className="text-white">Aceitamos: TRX, USDT, BNB, ADA, DOGE, PayPal e IBAN</span>
                                    
 

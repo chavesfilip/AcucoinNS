@@ -10,7 +10,7 @@ export default function Footer1(){
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <p>© 2022 A.C.U - Universo de Quadrinhos Africanos. Todos os direitos reservados </p>
+                        <p>Copyrigth 2022 - Todos os direitos reservado LARAVAGE LDA </p>
                     </div>
                 </div>
             </div>

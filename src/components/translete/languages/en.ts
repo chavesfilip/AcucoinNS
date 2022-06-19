@@ -2,7 +2,7 @@ const messages= {
     pt:{
         translations:{
             titles: {
-                h1:'participate in acucoin ICO!',
+                h1:'participate in acucoin ICO',
                 h2:'WHY CHOOSE ACUCOIN',
                 h5:'COMMUNITY',
                 h6:'SCARCE',
@@ -58,7 +58,7 @@ const messages= {
 
 
                 //FOOTER
-                p19:'2022 A.C.U - African Comics Universe. All rights reserved'
+                p19:'Copyright 2022 - All Rights Reserved LAVERAGE LDA'
 
                 
 

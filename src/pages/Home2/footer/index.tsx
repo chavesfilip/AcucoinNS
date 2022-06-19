@@ -51,7 +51,7 @@ export default function Footer(){
                             </ul>
 
                            <div className="footer_inner">
-                                <h5>LINGUAGENS</h5>
+                                <h5>TROCAR DE IDIOMAS</h5>
                                 <ul>
                                     <li>
                                        <Link to="/">inglês</Link>

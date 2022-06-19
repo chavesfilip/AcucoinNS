@@ -51,13 +51,13 @@ export default function Footer(){
                                 <li><a href="https://drive.google.com/file/d/1ORduN3cq4Tt43Olb0-UVww4sYzV4p5_Q/view" target="_BLANK">Português</a></li>
                             </ul>
                             <div className="footer_inner">
-                                <h5>LANGUAGE</h5>
+                                <h5>CHANGE LANGUAGE</h5>
                                 <ul>
                                     <li>
                                        <Link to="/pt"> Portuguese</Link>
                                     </li>
                                     <li>
-                                        <Link to="/about">
+                                        <Link to="/">
                                             English
                                         </Link>
                                     </li>

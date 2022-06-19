@@ -35,11 +35,11 @@ export default function Info2(){
                             <div id="particles-new2js" className="btc_ser_partical"></div>
                                     <div className="btc_ser_txt">
                                         <h4>ICO´s</h4>
-                                        <p>Pre-ICO : 200.000 ACU - 1 ACU - 0.02 USD</p>
-                                        <p>1st ICO : 200.000 ACU - 1 ACU - 0.3 USD</p>
-                                        <p>2nd ICO : 200.000 ACU - 1 ACU - 0.5 USD</p>
-                                        <p>3rd ICO : 200.000 ACU - 1 ACU - 0.7 USD</p>
-                                        <p>4th ICO : 200.000 ACU - 1 ACU - 0.9 USD</p>
+                                        <p>1st ICO : 200.000 ACU - 1 ACU - 0.02 USD</p>
+                                        <p>2nd ICO : 200.000 ACU - 1 ACU - 0.3 USD</p>
+                                        <p>3rd ICO : 200.000 ACU - 1 ACU - 0.5 USD</p>
+                                        <p>4th ICO : 200.000 ACU - 1 ACU - 0.7 USD</p>
+                                        <p>5th ICO : 200.000 ACU - 1 ACU - 0.9 USD</p>
                                     </div>
                             </div>
                         </div>
