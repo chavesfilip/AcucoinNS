@@ -66,13 +66,13 @@ export default function Full(){
                 <div className="col-sm-4">
                     <div className="serives_inner">
                         <h5><i className="fa fa-shopping-cart" aria-hidden="true"></i>FORMA DE PAGAMENTO </h5>
-                        <p>20 Negócios locais aceitam  acucoin como forma de pagamento de bens e serviços...</p>
+                        <p>20 Negócios locais aceitam  acucoin como forma de pagamento de bens e serviços.</p>
                     </div>
                 </div>
                 <div className="col-sm-4">
                     <div className="serives_inner">
                         <h5><i className="fa fa-line-chart" aria-hidden="true"></i>CONVENIENTE</h5>
-                        <p>  Transação instantânea, global e taxas muitos Baixas.</p>
+                        <p>  Transação instantânea, global e taxas muitos baixas.</p>
                     </div>
                 </div>
                 
@@ -85,7 +85,7 @@ export default function Full(){
                 <div className="col-sm-4">
                     <div className="serives_inner">
                         <h5><i className="fa fa-line-chart" aria-hidden="true"></i>MAIS VALOR</h5>
-                        <p>A Transição de revistas para livros aumentara o valor do Lastro.</p>
+                        <p>A transição de revistas para livros, aumentará o valor do Lastro.</p>
                     </div>
                 </div>
 

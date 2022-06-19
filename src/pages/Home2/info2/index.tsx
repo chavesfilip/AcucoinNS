@@ -35,10 +35,10 @@ export default function Info2(){
                                     <div className="btc_ser_txt">
                                         <h4>Fases do ICO</h4>
                                         <p>1º-ICO : 200.000 ACU - 1 ACU - 0.2 USD</p>
-                                        <p>1º ICO : 200.000 ACU - 1 ACU - 0.3 USD</p>
-                                        <p>2º ICO : 200.000 ACU - 1 ACU - 0.5 USD</p>
-                                        <p>3º ICO : 200.000 ACU - 1 ACU - 0.7 USD</p>
-                                        <p>4º ICO : 200.000 ACU - 1 ACU - 0.9 USD</p>
+                                        <p>2º ICO : 200.000 ACU - 1 ACU - 0.3 USD</p>
+                                        <p>3º ICO : 200.000 ACU - 1 ACU - 0.5 USD</p>
+                                        <p>4º ICO : 200.000 ACU - 1 ACU - 0.7 USD</p>
+                                        <p>5º ICO : 200.000 ACU - 1 ACU - 0.9 USD</p>
                                     </div>
                             </div>
                         </div>
