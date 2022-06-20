@@ -81,7 +81,9 @@ export default function Banner(){
                                     <span className="text-white">Aceitamos: TRX, USDT, BNB, ADA, DOGE, PayPal e IBAN</span>
                                    
 
+                                    /*
                                     <p className="text-center text-white mt-2"  style={{ position: 'relative', bottom: '-20px', fontWeight: 'bold',}}>Escolha um método de pagamento</p>
+                                    */
 
                                     <div className=" col-md-8  pt-4 container1">
                                         <div className="fx">
