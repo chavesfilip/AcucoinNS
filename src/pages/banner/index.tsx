@@ -82,7 +82,7 @@ export default function Banner(){
                                     <span className="text-white">{i18n.t('messages.span1')}</span>
                                    
 
-                                   /** <p className="text-center text-white mt-2"  style={{ position: 'relative', bottom: '-20px', fontWeight: 'bold',}}>{(i18n.t('messages.p'))}</p>**/
+                                   <!-- <p className="text-center text-white mt-2"  style={{ position: 'relative', bottom: '-20px', fontWeight: 'bold',}}>{(i18n.t('messages.p'))}</p> -->
 
                                     <div className=" col-md-8  pt-4 container1">
                                         <div className="fx">
