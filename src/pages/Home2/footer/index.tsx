@@ -35,7 +35,7 @@ export default function Footer(){
                             <ul>
                                 <li><a href="https://t.me/+cLCzNoYxTFlkODZk" target="_BLANK">Telegram Inglês</a></li>
                                 <li><a href="https://t.me/+OzE9MATskmdmNjFk" target="_BLANK">Telegram Espanhol</a></li>
-                                <li><a href="https://t.me/+UGqEfdBSh7NiYzk8" target="_BLANK">Telegram Portugues</a></li>
+                                <li><a href="https://t.me/+UGqEfdBSh7NiYzk8" target="_BLANK">Telegram Português</a></li>
                                 <li><a href="https://discord.gg/225NxyUg" target="_BLANK">Discord</a></li>
                             </ul>
                         </div>

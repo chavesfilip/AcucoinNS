@@ -1,5 +1,4 @@
 import React, {useState, useEffect, ChangeEvent } from 'react'
-import * as yup from "yup";
 import { Modal } from "react-bootstrap";
 import axios from 'axios'
 import swal from 'sweetalert';
@@ -54,7 +53,7 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
           }
         }
         
-        axios.post('https://dash.acucoin.ao/api/trx', params, config)
+        axios.post('https://admin-acucoin.ao/api/trx', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err))
        
         swal("Thank You!", "You aplication was sucessfully!", "success");
@@ -123,8 +122,8 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
                             />
                          </div>
                         <div className="form-group mt-3">
-                            <label  className="col-form-label">Email:</label>
-                            <input type="Email" className="form-control"  placeholder="bob@gmail.com" />
+                            <label  className="col-form-label">Sender Andress:</label>
+                            <input type="text" className="form-control"  placeholder="bob@gmail.com" />
                          </div>
 
                      

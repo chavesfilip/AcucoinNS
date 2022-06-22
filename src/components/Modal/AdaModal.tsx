@@ -55,7 +55,7 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
           }
         }
         
-        axios.post('https://dash.acucoin.ao/api/ada', params, config)
+        axios.post('https://admin-acucoin.ao/api/ada', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err))
         
         swal("Thank You!", "You aplication was sucessfully!", "success");
@@ -124,8 +124,8 @@ function inputValidated(e: any){
                                                                         
                             />
                             <div className="form-group mt-3">
-                                <label  className="col-form-label">Email:</label>
-                                <input type="Email" className="form-control"  placeholder="bob@gmail.com" />
+                                <label  className="col-form-label">Sender Adress:</label>
+                                <input type="text" className="form-control"  placeholder="bob@gmail.com" />
                          </div>
                          
                         </div>

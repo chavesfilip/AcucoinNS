@@ -46,7 +46,7 @@ const paypalModal = ({ show, handleClose }: IbanModalProps) => {
           }
         }
         
-        axios.post('https://dash.acucoin.ao/api/iban', params, config)
+        axios.post('https://admin-acucoin.ao/api/iban', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err))
         
         swal("Thank You!", "You aplication was sucessfully!", "success");
@@ -90,13 +90,7 @@ const paypalModal = ({ show, handleClose }: IbanModalProps) => {
                         />
                     </div>
 
-                     <div className="form-group">
-                        <label  className="col-form-label">Email</label>
-                        <input type="email" className="form-control"  placeholder="bob@gmail.com" 
-                                onChange={(e) => setEmail(e.target.value)}
-
-                        />
-                    </div>
+                   
 
 
 
