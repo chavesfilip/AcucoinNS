@@ -82,8 +82,63 @@ export default function Banner(){
                                     <span className="text-white">{i18n.t('messages.span1')}</span>
                                    
 
+                                    <p className="text-center text-white mt-2"  style={{ position: 'relative', bottom: '-20px', fontWeight: 'bold',}}>{(i18n.t('messages.p'))}</p>
 
-                                    
+                                    <div className=" col-md-8  pt-4 container1">
+                                        <div className="fx">
+                                            <img className="ml-4" src={img1}  style={{width: '40px'}} onClick={() => handleShow(1)}  title="TRX" />
+                                            <TrxModal 
+                                                show={activeModal === 1} 
+                                                handleClose={handleClose} 
+                                            />
+    
+                                        </div>
+                                        <div className="fx">
+                                            <img className="ml-4" src={img2} style={{width: '40px'}} title="USDT" onClick={() => handleShow(2)} />
+                                            <UsdtModal 
+                                                show={activeModal === 2}
+                                                handleClose={handleClose}
+                                            />
+                                        </div>
+
+                                        <div className="fx">
+                                            <img className="ml-4" src={img3} style={{width: '40px'}} title="BNB" onClick={() => handleShow(3)} />
+                                            <BnbModal 
+                                                show={activeModal === 3}
+                                                handleClose={handleClose}
+                                            />
+                                        </div>
+
+                                        <div className="fx">
+                                            <img className="ml-4" src={img4}  style={{width: '40px'}} title="ADA" onClick={() => handleShow(4)} />
+                                            <AdaModal 
+                                                show={activeModal === 4} 
+                                                handleClose={handleClose} 
+                                            />
+                                        </div>
+
+                                        <div className="fx">
+                                            <img className="ml-4" src={img5} style={{width: '40px'}} title="DOGE" onClick={() => handleShow(5)} />
+                                            <DogeModal 
+                                                show={activeModal === 5} 
+                                                handleClose={handleClose} 
+                                            />
+                                        </div>
+                                        <div className='fx'>
+                                            <img className="ml-4" src={img6}  style={{width: '40px'}} title="IBAN" onClick={() => handleShow(6)} />
+                                            <PaypalModal
+                                                show={activeModal === 6} 
+                                                handleClose={handleClose} 
+                                            />
+                                        </div>
+                                        <div className='fx'>
+                                            <img className="ml-4" src={img7}  style={{width: '40px',}} title="IBAN" onClick={() => handleShow(7)}  />
+                                            <IbanModal
+                                                show={activeModal === 7} 
+                                                handleClose={handleClose} 
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
