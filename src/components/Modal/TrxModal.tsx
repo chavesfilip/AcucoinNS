@@ -25,6 +25,8 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
     const [resultCalc, setResultCalc] = useState<number>()
     const [inputValue, setInputValue] = useState<string>("");
     const [inpute, setInpute] = useState<string>("");
+    const [andress, setAndress] = useState<string>("");
+
 
     const fetch = async () =>  {
       const response =  await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
@@ -46,6 +48,8 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
         params.append('nome', inpute)    
         params.append('valor', inputValue) 
         params.append('qtd', String(resultCalc))
+        params.append('senders', andress)
+
         
         const config = {
           headers: {
@@ -57,6 +61,9 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
         .then(response=> console.log('deu certo')).catch(err=>console.log(err))
        
         swal("Thank You!", "You aplication was sucessfully!", "success");
+        setInputValue("")
+        setInpute("")
+        setAndress("")
  
         
     }
@@ -76,22 +83,31 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
         setInputValue(e.target.value) 
         setResultCalc(calcInput)
 }
-  function inputValidated(e: any){
+function inputValidated(e: any) {
     e.preventDefault();
-    if(inpute === "" || inputValue === ""){
-        swal ( "Oops" ,  "Please fill in all fields!" ,  "error" )
-    }else{
-        if (inputValue <= "25") {
-            swal ( "Oops" ,  "The amount must be greater than 250! or less than!" ,  "error" ) 
-        }else{
+    
+    if (
+        inputValue &&
+        typeof inputValue === 'string' &&
+        inputValue.length > 0 &&
+        !isNaN(Number(inputValue))
+    ) {
+        let _value: number = parseInt(inputValue.trim());
+
+        if (_value >= 25 && _value <= 20000) {
             addApi(e);
-            setInputValue("")
             setInpute("")
+
+            return;
         }
 
-
+        swal ( "Oops" ,  "The amount must be greater than 25 or less than 20000!!!" ,  "error" ) 
+        return;
     }
-  }
+    
+    swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
+}
+
 
   
    
@@ -123,7 +139,7 @@ const TrxModal = ({ show, handleClose }: TrxModalProps) => {
                          </div>
                         <div className="form-group mt-3">
                             <label  className="col-form-label">Sender Andress:</label>
-                            <input type="text" className="form-control"  placeholder="bob@gmail.com" />
+                            <input type="text" className="form-control"  placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9" onChange={(e) => setAndress(e.target.value)} />
                          </div>
 
                      

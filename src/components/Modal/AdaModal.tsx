@@ -22,6 +22,7 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
     const [resultCalc, setResultCalc] = useState<number>()
     const [inputValue, setInputValue] = useState<string>("");
     const [inpute, setInpute] = useState<string>("");
+    const [andress, setAndress] = useState<string>("");
     
 
 
@@ -48,6 +49,8 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
         params.append('nome', inpute)    
         params.append('valor', inputValue) 
         params.append('qtd', String(resultCalc))
+        params.append('senders', andress)
+
         
         const config = {
           headers: {
@@ -59,6 +62,10 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
         .then(response=> console.log('deu certo')).catch(err=>console.log(err))
         
         swal("Thank You!", "You aplication was sucessfully!", "success");
+        setInputValue("")
+        setInpute("")
+        setAndress("")
+
         
     }
 
@@ -75,22 +82,31 @@ const adaModal = ({ show, handleClose }: AdaModalProps) => {
         setInputValue(e.target.value) 
         setResultCalc(calcInput)
 }
-function inputValidated(e: any){
+function inputValidated(e: any) {
     e.preventDefault();
-    if(inpute === "" || inputValue === ""){
-        swal ( "Oops" ,  "please fill in all fields!" ,  "error" )
-    }else{
-        if (inputValue <= "25" || inputValue <= "20000") {
-            swal ( "Oops" ,  "The amount must be greater than 250 or less than 20000!" ,  "error" ) 
-        }else{
+    
+    if (
+        inputValue &&
+        typeof inputValue === 'string' &&
+        inputValue.length > 0 &&
+        !isNaN(Number(inputValue))
+    ) {
+        let _value: number = parseInt(inputValue.trim());
+
+        if (_value >= 25 && _value <= 20000) {
             addApi(e);
-            setInputValue("")
             setInpute("")
+
+            return;
         }
 
-
+        swal ( "Oops" ,  "The amount must be greater than 25 or less than 20000!!!" ,  "error" ) 
+        return;
     }
-  }
+    
+    swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
+}
+
 
 
   
@@ -125,8 +141,8 @@ function inputValidated(e: any){
                             />
                             <div className="form-group mt-3">
                                 <label  className="col-form-label">Sender Adress:</label>
-                                <input type="text" className="form-control"  placeholder="bob@gmail.com" />
-                         </div>
+                                <input type="text" className="form-control"  placeholder="bob@gmail.com"  onChange={(e) => setAndress(e.target.value)} />
+                            </div>
                          
                         </div>
 

@@ -26,6 +26,8 @@ const UsdtModal = ({ show, handleClose }: UsdtModalProps) => {
     const [resultCalc, setResultCalc] = useState<number>()
     const [inputValue, setInputValue] = useState<string>("");
     const [inpute, setInpute] = useState<string>("");
+    const [andress, setAndress] = useState<string>("");
+
 
 
     const fetch = async () =>  {
@@ -48,6 +50,8 @@ const UsdtModal = ({ show, handleClose }: UsdtModalProps) => {
         params.append('nome', inpute)    
         params.append('valor', inputValue) 
         params.append('qtd', String(resultCalc))
+        params.append('senders', andress)
+
         
         const config = {
           headers: {
@@ -58,6 +62,8 @@ const UsdtModal = ({ show, handleClose }: UsdtModalProps) => {
         axios.post('https://admin-acucoin.ao/api/usdt', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err)) 
         swal("Thank You!", "You aplication was sucessfully!", "success");
+        setInputValue("")
+        setInpute("")
 
         
     }
@@ -79,22 +85,32 @@ const UsdtModal = ({ show, handleClose }: UsdtModalProps) => {
         setInputValue(e.target.value) 
         setResultCalc(calcInput)
 }
-function inputValidated(e: any){
+function inputValidated(e: any) {
     e.preventDefault();
-    if(inpute === "" || inputValue === ""){
-        swal ( "Oops" ,  "Please fill in all fields!" ,  "error" )
-    }else{
-        if (inputValue <= "25") {
-            swal ( "Oops" ,  "The amount must be greater than 250 or less than 20000!" ,  "error" ) 
-        }else{
+    
+    if (
+        inputValue &&
+        typeof inputValue === 'string' &&
+        inputValue.length > 0 &&
+        !isNaN(Number(inputValue))
+    ) {
+        let _value: number = parseInt(inputValue.trim());
+
+        if (_value >= 25 && _value <= 20000) {
             addApi(e);
-            setInputValue("")
             setInpute("")
+
+            return;
         }
 
-
+        swal ( "Oops" ,  "The amount must be greater than 25 or less than 20000!!!" ,  "error" ) 
+        return;
     }
-  } 
+    
+    swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
+}
+
+
 
    
 
@@ -126,7 +142,7 @@ function inputValidated(e: any){
                         />
                         <div className="form-group mt-3">
                             <label  className="col-form-label">Sender Andress:</label>
-                            <input type="text" className="form-control"  placeholder="bob@gmail.com" />
+                            <input type="text" className="form-control"  placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9" onChange={(e) => setAndress(e.target.value)} />
                          </div>
                     </div>
                     <div className="form-group row">

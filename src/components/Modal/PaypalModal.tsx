@@ -35,7 +35,7 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
           }
         }
         
-        axios.post('https://admin-acucoin.ao/api/ada', params, config)
+        axios.post('https://admin-acucoin.ao/api/pp', params, config)
         .then(response=> console.log('deu certo')).catch(err=>console.log(err))
         
         swal("Thank You!", "You aplication was sucessfully!", "success");
@@ -52,23 +52,34 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
 
         
     }
-    function inputValidated(e: any){
+    function inputValidated(e: any) {
         e.preventDefault();
-        if(inpute === "" || value === ""){
-            swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
-        }else{
-            if (value <= "25") {
-                swal ( "Oops" ,  "The amount must be greater than 250 or less than 20000!!!" ,  "error" ) 
-            }else{
+        
+        if (
+            value &&
+            typeof value === 'string' &&
+            value.length > 0 &&
+            !isNaN(Number(value))
+        ) {
+            let _value: number = parseInt(value.trim());
+    
+            if (_value >= 25 && _value <= 20000) {
                 addApi(e);
-                setValue("")
                 setInpute("")
+    
+                return;
             }
     
-    
+            swal ( "Oops" ,  "The amount must be greater than 25 or less than 20000!!!" ,  "error" ) 
+            return;
         }
-      }
+        
+        swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
+    }
     
+    
+
+     
 
     
     return(
@@ -102,6 +113,7 @@ const paypalModal = ({ show, handleClose }: PaypalModalProps) => {
                                     <label className="col-form-label">You will get ACU:</label>
                                     <input type="number" className="form-control" id="value_coin" placeholder="25"   onChange={ (e) => handleChange(e)} />
                             </div>
+
                             <div className="col-sm-5">
                                  <label  
                                     className="col-form-label">

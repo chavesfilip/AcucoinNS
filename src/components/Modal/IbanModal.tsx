@@ -17,60 +17,80 @@ type IbanModalProps = {
     handleClose: () => void;
 };
 const paypalModal = ({ show, handleClose }: IbanModalProps) => {
-    const [value, setValue] = useState('')
     const [input, setInpute] = useState('')
-    const [email, setEmail] = useState('')
+    const [resultCalc, setResultCalc] = useState<number>()
+    const [inputValue, setInputValue] = useState<string>("");
 
-    const [resultValue, setResultValue] = useState<number>(0)
+    const [image, setImage] = useState('')
+    const [andress, setAndress] = useState<string>("");
+
+
+
+
+   
+    const onInputChange = (e: any) => {
+        setImage(e.target.files[0])
+    };
+    function addApi(e: any) {
+        e.preventDefault();
+      
+        const params = new FormData()
+      
+        params.append('iban', input)
+        params.append('valor', inputValue)
+        params.append('qtd', String(resultCalc))
+        params.append('image', image)
+      
+        const config = {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      
+        axios.post('https://admin-acucoin.ao/api/iban', params, config)
+          .then((res: any) => console.log(res))
+          .catch((err: any) => console.log(err))
+      
+        swal("Thank You!", "You aplication was sucessfully!", "success");
+        setInpute("")
+        setInputValue("")
+
+      }
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
-        setValue(e.target.value);
 
         const numberInput = Number(e.target.value)
         const calcInput = numberInput / 100;
-        setResultValue(calcInput)
+
+        setInputValue(e.target.value) 
+        setResultCalc(calcInput)
 
         
     }
-    function addApi(e:any) {
+    function inputValidated(e: any) {
         e.preventDefault();
-
-        const params = new URLSearchParams()
+        
+        if (
+            inputValue &&
+            typeof inputValue === 'string' &&
+            inputValue.length > 0 &&
+            !isNaN(Number(inputValue))
+        ) {
+            let _value: number = parseInt(inputValue.trim());
     
-      //  params.append('endress', inpute)    
-       // params.append('valor', inputValue) 
-       // params.append('qtd', String(resultCalc))
-        
-        const config = {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }
-        
-        axios.post('https://admin-acucoin.ao/api/iban', params, config)
-        .then(response=> console.log('deu certo')).catch(err=>console.log(err))
-        
-        swal("Thank You!", "You aplication was sucessfully!", "success");
-        
-        
-    }
-    function inputValidated(e: any){
-        e.preventDefault();
-        if(value === "" || input === "" || email === ""){
-            swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
-        }else{
-            if (value <= "25") {
-                swal ( "Oops" ,  "The amount must be greater than 250 or less than 20000!!" ,  "error" ) 
-            }else{
+            if (_value >= 25 && _value <= 20000) {
                 addApi(e);
-                setValue("")
                 setInpute("")
+    
+                return;
             }
     
-    
+            swal ( "Oops" ,  "The amount must be greater than 25 or less than 20000!!!" ,  "error" ) 
+            return;
         }
-      }
-
-   
+        
+        swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
+    }
+    
     
     return(
         <Modal show={show}  onHide={handleClose}>
@@ -86,8 +106,12 @@ const paypalModal = ({ show, handleClose }: IbanModalProps) => {
                         </code>
                         <input type="text" className="form-control" placeholder="TDtGD9ydFTyrrqoa9xpsMGBFMn6DRDErU9"
                          onChange={(e) => setInpute(e.target.value)}
-
                         />
+                    </div>
+                    
+                    <div className="mb-3 mt-3">
+                                <label  className="form-label">Proof</label>
+                                <input className="form-control" type="file" id="formFile" onChange={onInputChange} accept="image/*,.png, .jpg"/>
                     </div>
 
                    
@@ -110,7 +134,7 @@ const paypalModal = ({ show, handleClose }: IbanModalProps) => {
                          <div className="col-sm-6">
                              <label className="col-form-label">You will get Acucoin</label>
                              <h1>
-                             {resultValue} <span style={{fontSize: '20px'}}>ACU</span>
+                             {resultCalc} <span style={{fontSize: '20px'}}>ACU</span>
                             </h1>
                          </div>
                     </div>
