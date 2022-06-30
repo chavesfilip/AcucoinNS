@@ -1,3 +1,4 @@
+
 import React, {useState, ChangeEvent} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../assets/css/slick.css'
@@ -80,8 +81,10 @@ export default function Banner(){
                                     <span className="text-white">Aceitamos: TRX, USDT, BNB, ADA, DOGE, PayPal e IBAN</span>
                                    
 
+                                    /*
                                     <p className="text-center text-white mt-2"  style={{ position: 'relative', bottom: '-20px', fontWeight: 'bold',}}>Escolha um método de pagamento</p>
-
+                                    */
+                                    /*
                                     <div className=" col-md-8  pt-4 container1">
                                         <div className="fx">
                                             <img className="ml-4" src={img1}  style={{width: '40px'}} onClick={() => handleShow(1)}  title="TRX" />
@@ -136,7 +139,7 @@ export default function Banner(){
                                                 handleClose={handleClose} 
                                             />
                                         </div>
-                                    </div>
+                                    </div>*/
                                 </div>
                             </div>
                         </div>
