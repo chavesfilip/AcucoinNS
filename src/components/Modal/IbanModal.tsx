@@ -78,6 +78,8 @@ const paypalModal = ({ show, handleClose }: IbanModalProps) => {
             let _value: number = parseInt(inputValue.trim());
     
             if (_value >= 25 && _value <= 20000) {
+
+                validationInputAdress()
                 addApi(e);
                 setInpute("")
     
@@ -90,7 +92,14 @@ const paypalModal = ({ show, handleClose }: IbanModalProps) => {
         
         swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
     }
-    
+
+    function validationInputAdress(){
+        if(input === ""){
+            swal ( "Oops" ,  "please fill in all fields!!!" ,  "error" )
+            return;
+        }
+    }
+
     
     return(
         <Modal show={show}  onHide={handleClose}>

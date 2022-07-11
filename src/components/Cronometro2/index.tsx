@@ -14,7 +14,7 @@ export default function Cronometro2(){
     let interval:any  = useRef();
 
     const startTime = () => {
-        const countdownDate = new Date('july 5 2022, 00:00:00:00').getTime();
+        const countdownDate = new Date('july 26 2022, 00:00:00:00').getTime();
 
         interval = setInterval(() => {
             const  now = new Date().getTime();
